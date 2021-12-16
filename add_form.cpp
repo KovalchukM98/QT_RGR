@@ -8,17 +8,22 @@ Add_form::Add_form(QWidget *parent) :
     ui->setupUi(this);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(ok_clicked()));
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(cancel_clicked()));
+    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(open_photo()));
 
     query = new QSqlQuery;
     ui->dateEdit->setDate(QDate::currentDate());
+    ui->photo_line->hide();
 }
 
 Add_form::Add_form(QSqlDatabase db) : ui(new Ui::Add_form){
     ui->setupUi(this);
     connect(ui->pushButton, SIGNAL(clicked()), this, SLOT(ok_clicked()));
     connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(cancel_clicked()));
+    connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(open_photo()));
+
     query = new QSqlQuery(db);
     ui->dateEdit->setDate(QDate::currentDate());
+    ui->photo_line->hide();
 }
 
 Add_form::~Add_form()
@@ -35,6 +40,14 @@ void Add_form::connect_database(QSqlQuery *db){
         delete query;
     }
     query = db;
+}
+
+void Add_form::open_photo(){
+    QString filename = QFileDialog::getOpenFileName(0, "Выберите изображение", "D:/Qt_lab/", "*.png *.jpg *.gif *.jpeg");
+    ui->photo_line->setText(filename);
+    QImage image(filename);
+    QPixmap pix = QPixmap::fromImage(image);
+    ui->photo_label->setPixmap(pix.scaled(ui->photo_label->width(), ui->photo_label->height(), Qt::KeepAspectRatio));
 }
 
 void Add_form::cancel_clicked(){
@@ -67,6 +80,10 @@ void Add_form::prepare(QString name, QString size, QString man, QString transf,
     d.setDate(year, mon, day);
     ui->dateEdit->setDate(d);
     ui->photo_line->setText(photo);
+    QImage image(photo);
+    QPixmap pix = QPixmap::fromImage(image);
+    ui->photo_label->setPixmap(pix.scaled(ui->photo_label->width(), ui->photo_label->height(), Qt::KeepAspectRatio));
+
     ui->gender_line->setText(sex);
 }
 
@@ -79,7 +96,7 @@ void Add_form::ok_clicked(){
         return;
     }
     if(change){
-        query->prepare("UPDATE tab SET Наименование = ':name', Размер = ':size', Производитель = ':made', Поставщик = ':transfer', Цена = ':cost' , Наличие = ':num' , Дата = ':date', Фото = ':photo', Пол = :sex WHERE Код = ':id';");
+        query->prepare("UPDATE tab SET Наименование = :name, Размер = :size, Производитель = :made, Поставщик = :transfer, Цена = :cost , Наличие = :num , Дата = :date, Фото = :photo, Пол = :sex WHERE Код = :id;");
         query->bindValue(":id", code);
     }
     else{

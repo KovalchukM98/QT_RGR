@@ -7,6 +7,9 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QDateTime>
+#include <QTextStream>
+#include <QFile>
+#include <QFileDialog>
 
 namespace Ui {
 class Add_form;
@@ -37,6 +40,7 @@ private:
 private slots:
     void cancel_clicked();
     void ok_clicked();
+    void open_photo();
 
 signals:
     void need_refresh();

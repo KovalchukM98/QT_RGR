@@ -37,6 +37,15 @@ private slots:
     void search_clicked();
     void cancel_clicked();
 
+    void change_state_name();
+    void change_state_size();
+    void change_state_man();
+    void change_state_prov();
+    void change_state_cost();
+    void change_state_num();
+    void change_state_date();
+    void change_state_sex();
+
 signals:
     void need_refresh();
     void need_reset();

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>287</width>
-    <height>339</height>
+    <width>319</width>
+    <height>531</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>290</y>
+     <y>480</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -29,8 +29,8 @@
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>290</y>
+     <x>180</x>
+     <y>480</y>
      <width>93</width>
      <height>28</height>
     </rect>
@@ -39,18 +39,70 @@
     <string>Отмена</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget">
+  <widget class="QLabel" name="photo_label">
    <property name="geometry">
     <rect>
-     <x>34</x>
-     <y>24</y>
+     <x>130</x>
+     <y>280</y>
+     <width>131</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>выберите...</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="photo_line">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>270</y>
+     <width>137</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="geometry">
+    <rect>
+     <x>150</x>
+     <y>410</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Открыть...</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_8">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>270</y>
+     <width>30</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Фото</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>36</x>
+     <y>26</y>
      <width>240</width>
-     <height>258</height>
+     <height>229</height>
     </rect>
    </property>
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
@@ -101,13 +153,6 @@
        </widget>
       </item>
       <item>
-       <widget class="QLabel" name="label_8">
-        <property name="text">
-         <string>Фото</string>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QLabel" name="label_9">
         <property name="text">
          <string>Пол</string>
@@ -117,7 +162,7 @@
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2">
+     <layout class="QVBoxLayout" name="verticalLayout">
       <item>
        <widget class="QLineEdit" name="Name_line"/>
       </item>
@@ -138,9 +183,6 @@
       </item>
       <item>
        <widget class="QDateEdit" name="dateEdit"/>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="photo_line"/>
       </item>
       <item>
        <widget class="QLineEdit" name="gender_line"/>
